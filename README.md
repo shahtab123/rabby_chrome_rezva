@@ -56,7 +56,14 @@ Output folder: `dist/`
 | --- | --- |
 | `shahtab.rabby` | Provider name |
 | `test@test.com` | Email |
+| `https://cash.app/$coffeeandamike` | Custom (payment URL / handle) |
 | Bangla / EMV QR | Full QR text starting with `000201…`, or scan the poster |
+
+Cash App links and other free-form URLs must resolve as **`custom`**, not
+`merchant_id`. If you see “No mapping exists” for a registered URL, rebuild
+after pulling the latest `inferType` fix and confirm
+`REZVA_API_BASE_URL` points at production (debug builds default to
+`http://127.0.0.1:8787`).
 
 Sample Bangla QR poster (scan with Rabby’s QR button or paste the decoded EMV string):
 
