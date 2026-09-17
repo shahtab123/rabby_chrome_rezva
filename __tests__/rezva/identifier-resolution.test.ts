@@ -62,6 +62,19 @@ describe('classifySendInput', () => {
     });
   });
 
+  it('classifies Cash App links as custom (not merchant_id)', () => {
+    expect(
+      classifySendInput('https://cash.app/$coffeeandamike')
+    ).toMatchObject({
+      kind: 'identifier',
+      type: 'custom',
+      value: 'https://cash.app/$coffeeandamike',
+    });
+    expect(inferIdentifierType('https://cash.app/$coffeeandamike')).toBe(
+      'custom'
+    );
+  });
+
   it('classifies email, phone, provider name, and explicit types', () => {
     expect(classifySendInput('pay@example.com')).toMatchObject({
       kind: 'identifier',
